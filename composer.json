@@ -1,0 +1,22 @@
+{
+    "name": "offneo/yii2-colorpicker",
+    "description": "Yii2 Colorpicker widget implements jquery-minicolors and allows to use it easily in the project.",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","offneo","colorpicker","minicolors"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Offneo",
+            "email": "admin@offneo.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/jquery-minicolors": "2.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "offneo\\colorpicker\\": ""
+        }
+    }
+}
