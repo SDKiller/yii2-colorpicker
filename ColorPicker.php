@@ -58,6 +58,6 @@ class ColorPicker extends InputWidget
     {
 		$clientOptions = (count($this->clientOptions)) ? Json::encode($this->clientOptions) : '';
 		$widgetId = $this->options['id'];// . '-box';
-		$this->getView()->registerJs("jQuery('#{$widgetId}').minicolors({$clientOptions});", yii\web\View::POS_READY);
+		$this->getView()->registerJs("jQuery('#{$widgetId}').minicolors({$clientOptions});", \yii\web\View::POS_READY);
     }
 }
