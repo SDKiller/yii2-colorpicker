@@ -10,16 +10,26 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist offneo/yii2-colorpicker "*"
+php composer.phar require --prefer-dist zyx/yii2-colorpicker "*"
 ```
 
 or add
 
 ```
-"offneo/yii2-colorpicker": "*"
+"zyx/yii2-colorpicker": "*"
 ```
 
 to the require section of your `composer.json` file.
+
+Note: currently it is not hosted on Packagist, need to add explicitly to "repositories" section:
+
+```
+    {
+        "name": "zyx/yii2-colorpicker",
+        "type": "vcs",
+        "url": "git@github.com:SDKiller/yii2-colorpicker.git"
+    }
+```
 
 
 Usage
@@ -28,4 +38,6 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= $form->field($model, 'attribute')->widget(\zyx\yii2-colorpicker\ColorPicker::className(), $options, $clientOptions); ?>
+
+<?= $form->field($model, 'attribute')
+    ->widget(\zyx\yii2-colorpicker\ColorPicker::className(), $options, $clientOptions); ?>
