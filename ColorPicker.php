@@ -81,6 +81,6 @@ class ColorPicker extends InputWidget
     public function registerScript()
     {
         $clientOptions = empty($this->clientOptions) ? '' : new JsExpression(Json::encode($this->clientOptions));
-        $this->getView()->registerJs('jQuery("#{' . $this->options['id'] . '}").minicolors(' . $clientOptions . ');', \yii\web\View::POS_READY);
+        $this->getView()->registerJs('jQuery("#' . $this->options['id'] . '").minicolors(' . $clientOptions . ');', \yii\web\View::POS_READY);
     }
 }
