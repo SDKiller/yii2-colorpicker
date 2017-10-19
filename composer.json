@@ -1,13 +1,18 @@
 {
-    "name": "offneo/yii2-colorpicker",
+    "name": "zyx/yii2-colorpicker",
     "description": "Yii2 Colorpicker widget implements jquery-minicolors and allows to use it easily in the project.",
     "type": "yii2-extension",
-    "keywords": ["yii2","extension","offneo","colorpicker","minicolors"],
-    "license": "Apache-2.0",
+    "keywords": ["yii2","extension","colorpicker","minicolors"],
+    "homepage": "https://github.com/SDKiller/yii2-colorpicker",
+    "license": "BSD 3-Clause",
     "authors": [
         {
             "name": "Offneo",
             "email": "admin@offneo.com"
+        },
+        {
+            "name": "Serge Postrash aka SDKiller",
+            "email": "jexy.ru@gmail.com"
         }
     ],
     "require": {
@@ -16,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "offneo\\colorpicker\\": ""
+            "zyx\\colorpicker\\": ""
         }
     }
 }

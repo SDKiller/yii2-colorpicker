@@ -1,6 +1,6 @@
 Yii2 Colorpicker Widget
 =======================
-Yii2 Colorpicker widget implements jquery-minicolors and allows to use it easily in the project.
+Yii2 Colorpicker widget implements [jquery-minicolors](https://github.com/claviska/jquery-minicolors) and allows to use it easily in the project.
 
 Installation
 ------------
@@ -28,4 +28,4 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= $form->field($model, 'attribute')->widget(\offneo\yii2-colorpicker\ColorPicker::className(), $options, $clientOptions); ?>
+<?= $form->field($model, 'attribute')->widget(\zyx\yii2-colorpicker\ColorPicker::className(), $options, $clientOptions); ?>

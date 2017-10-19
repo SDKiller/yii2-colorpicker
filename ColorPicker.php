@@ -1,63 +1,86 @@
 <?php
+/**
+ * @author      Serge Postrash aka SDKiller <jexy.ru@gmail.com>
+ * @link        https://github.com/SDKiller/yii2-colorpicker
+ * @copyright   Copyright (c) 2017 Serge Postrash
+ * @license     BSD 3-Clause, see LICENSE.md
+ */
 
-namespace offneo\colorpicker;
-use Yii;
+namespace zyx\colorpicker;
+
+use yii\web\JsExpression;
 use yii\widgets\InputWidget;
 use yii\helpers\Html;
 use yii\helpers\Json;
 
 /**
- * Color picker widget
+ * Class ColorPicker
+ * @package zyx\colorpicker
+ *
+ * @link https://github.com/claviska/jquery-minicolors
+ * @link https://labs.abeautifulsite.net/jquery-minicolors/
  */
 class ColorPicker extends InputWidget
 {
-	public $name;
-	
-	public $value;
-	
-	public $options = [
-		'class' => 'form-control'	
-	];
-	
-	public $clientOptions = [
-		'control' => 'wheel',
-		'position' => 'bottom right',
-		'theme' => 'bootstrap'	
-	];
-	
-	public function init()
-	{
-		if($this->hasModel()) {
-			$this->options['id'] = Html::getInputId($this->model, $this->attribute);
-		} else {
-			$this->options['id'] = $this->getId();
-		}
-		
-		$this->registerAssets();
-		$this->registerScript();
-	}
-	
+    /**
+     * @var array
+     */
+    public $options = [
+        'class' => 'form-control',
+    ];
+    /**
+     * @var array
+     */
+    public $clientOptions = [
+        'control'  => 'wheel',
+        'position' => 'bottom left',
+        'theme'    => 'bootstrap',
+    ];
+    /**
+     * @var bool
+     */
+    public $initJs = true;
+
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+
+        if ($this->initJs === true) {
+            $this->registerAssets();
+            $this->registerScript();
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
-// 		echo Html::beginTag('div', ['id' => $this->options['id'].'-box', 'class' => 'input-group date']);
-		if($this->hasModel()) {	
-			echo Html::activeTextInput($this->model, $this->attribute, $this->options);
-		} else {
-			echo Html::textInput($this->name, $this->value, $this->options);
-		}
-// 		echo Html::tag('span', '<span class="glyphicon glyphicon-calendar"></span>', ['class' => 'input-group-addon']);
-// 		echo Html::endTag('div');
+        if ($this->hasModel()) {
+            echo Html::activeTextInput($this->model, $this->attribute, $this->options);
+        } else {
+            echo Html::textInput($this->name, $this->value, $this->options);
+        }
     }
-    
+
+    /**
+     * Register https://github.com/claviska/jquery-minicolors asset
+     */
     public function registerAssets()
     {
-    	ColorPickerAsset::register($this->getView());
+        ColorPickerAsset::register($this->getView());
     }
-    
+
+    /**
+     * Init client script
+     */
     public function registerScript()
     {
-		$clientOptions = (count($this->clientOptions)) ? Json::encode($this->clientOptions) : '';
-		$widgetId = $this->options['id'];// . '-box';
-		$this->getView()->registerJs("jQuery('#{$widgetId}').minicolors({$clientOptions});", \yii\web\View::POS_READY);
+        $clientOptions = empty($this->clientOptions) ? '' : new JsExpression(Json::encode($this->clientOptions));
+        $this->getView()->registerJs('jQuery("#{' . $this->options['id'] . '}").minicolors(' . $clientOptions . ');', \yii\web\View::POS_READY);
     }
 }

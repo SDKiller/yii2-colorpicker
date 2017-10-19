@@ -1,0 +1,10 @@
+.DS_Store
+__MACOSX
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+.thumbs
+bash.exe.stackdump
+.idea
+#/composer.lock
